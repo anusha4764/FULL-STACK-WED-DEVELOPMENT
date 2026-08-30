@@ -1,164 +1,125 @@
-// ==================================================
-// 1. SINGLE INHERITANCE
-// ==================================================
-
+//Single Inheritance
+console.log("Single Inheritance");
 class Animal {
-    eat() {
-        console.log("Animal is eating");
+    constructor(name){
+        this.name=name;
+    }
+    eat(){
+        console.log(`${this.name} is eating.`);
     }
 }
+class Dog extends Animal{
+    bark(){
+        console.log(`${this.name} is barking.`)
+    } 
+}
+const myDog = new Dog("Buddy");
+myDog.eat();
+myDog.bark();
 
-class Dog extends Animal {
-    bark() {
-        console.log("Dog is barking");
+//Multilevel Inheritance
+console.log("Multilevel Inheritance");
+class Vehicle {
+    move(){
+        console.log("Moving forward");
     }
 }
-
-const dog = new Dog();
-
-dog.eat();
-dog.bark();
-
-
-// ==================================================
-// 2. MULTIPLE INHERITANCE
-// ==================================================
-
-class Father {
-    fatherProperty() {
-        console.log("Father's property");
+class Bike extends Vehicle{
+    wheels(){
+        console.log("Bike has 2 Wheels");
     }
 }
-
-class Mother {
-    motherProperty() {
-        console.log("Mother's property");
+class Car extends Bike{
+    windows(){
+        console.log("Car has 4 Windows");
     }
 }
+const v = new Car();
+v.move();
+v.wheels();
+v.windows();
 
-class Child {}
-
-// Copy methods from Father and Mother
-Object.getOwnPropertyNames(Father.prototype).forEach((method) => {
-    if (method !== "constructor") {
-        Child.prototype[method] = Father.prototype[method];
+//Hierarchial Inheritance
+console.log("Hierarchial Inheritance");
+class User{
+    constructor(username){
+        this.username = username;
     }
-});
-
-Object.getOwnPropertyNames(Mother.prototype).forEach((method) => {
-    if (method !== "constructor") {
-        Child.prototype[method] = Mother.prototype[method];
-    }
-});
-
-const child = new Child();
-
-child.fatherProperty();
-child.motherProperty();
-
-
-// ==================================================
-// 3. MULTILEVEL INHERITANCE
-// ==================================================
-
-class Animal1 {
-    eat() {
-        console.log("Animal is eating");
+    login(){
+        console.log(`${this.username} logged in.`);
     }
 }
-
-class Dog1 extends Animal1 {
-    bark() {
-        console.log("Dog is barking");
+class Admin extends User{
+    deleteUser(){
+        console.log(`${this.username} deleted by admin`);
     }
 }
-
-class Puppy extends Dog1 {
-    play() {
-        console.log("Puppy is playing");
+class Customer extends User{
+    checkout(){
+        console.log(`${this.username} checked out successfully.`);
     }
 }
+const a = new Admin("Anvitha");
+const c = new Customer("Sam");
+a.login();
+c.login();
+a.deleteUser();
+c.checkout();
 
-const puppy = new Puppy();
-
-puppy.eat();
-puppy.bark();
-puppy.play();
-
-
-// ==================================================
-// 4. HIERARCHICAL INHERITANCE
-// ==================================================
-
-class Animal2 {
-    eat() {
-        console.log("Animal is eating");
+//Multiple Inheritance
+console.log("Multiple Inheritance");
+//Using Mixins
+const hall = {
+    sofa(){
+        console.log("Sofa is placed in Hall.");
+    },
+    tv(){
+        console.log("Tv is placed in Hall.")
+    }
+}; 
+const bedRoom = {
+    bed(){
+        console.log("Bed is in bedroom.");
+    },
+    closet(){
+        console.log("Closet is in Bedroom.");
+    }
+};
+class Building{
+    constructor(houseNo){
+        this.houseNo = houseNo;
+    }
+    house(){
+        console.log(`Building House No: ${this.houseNo}`);
     }
 }
-
-class Dog2 extends Animal2 {
-    bark() {
-        console.log("Dog is barking");
+class Area extends Building{
+    constructor(houseNo,area){
+        super(houseNo);
+        this.area = area;
     }
 }
+Object.assign(Area.prototype,hall,bedRoom);
+const name = new Area("403","Kommadi");
+name.house();
+name.sofa();
+name.bed();
 
-class Cat extends Animal2 {
-    meow() {
-        console.log("Cat is meowing");
+//Hybrid Inheritance
+console.log("Hybrid Inheritance");
+class Device{
+    turnOn(){
+        console.log("Device is on");
     }
 }
-
-const dog2 = new Dog2();
-const cat = new Cat();
-
-dog2.eat();
-dog2.bark();
-
-cat.eat();
-cat.meow();
-
-
-// ==================================================
-// 5. HYBRID INHERITANCE
-// ==================================================
-class Animal3 {
-    eat() {
-        console.log("Animal is eating");
+const Battery={
+    charge(){
+        console.log("Charging battery");
     }
-}
+};
+class ToyCar extends Device{}
+Object.assign(ToyCar.prototype,Battery);
+const myToy = new ToyCar();
+myToy.turnOn();
+myToy.charge();
 
-class Dog3 extends Animal3 {
-    bark() {
-        console.log("Dog is barking");
-    }
-}
-
-class Cat3 extends Animal3 {
-    meow() {
-        console.log("Cat is meowing");
-    }
-}
-
-class Running {
-    run() {
-        console.log("Dog is running");
-    }
-}
-
-// Add Running functionality to Dog3
-Object.getOwnPropertyNames(Running.prototype).forEach((method) => {
-    if (method !== "constructor") {
-        Dog3.prototype[method] = Running.prototype[method];
-    }
-});
-
-const dog3 = new Dog3();
-
-dog3.eat();
-dog3.bark();
-dog3.run();
-
-const cat3 = new Cat3();
-
-cat3.eat();
-cat3.meow();
