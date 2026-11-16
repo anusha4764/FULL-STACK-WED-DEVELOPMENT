@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🎓 Student Records Management System
 ### Full-Stack Architecture: React (Vercel) + Express.js (Render) + MongoDB Atlas
 
@@ -248,3 +249,15 @@ npm test
 | 10 | **Vercel SPA 404 on Refresh** | Server looking for static file | Added `vercel.json` rewrite rule directing all routes to `/index.html` |
 
 *(See [docs/CORS_AND_DEPLOYMENT_ANALYSIS.md](docs/CORS_AND_DEPLOYMENT_ANALYSIS.md) for full deep-dive).*
+=======
+# Full Stack Web Development - Lab Portfolio
+
+---
+
+- **Student Name:** K.Anusha
+- **Roll Number:** A24126552088
+- **Department:** Computer Science & Engineering (AI & ML)
+- **Academic Year:** 2026-2027
+
+---
+>>>>>>> 44bbe3d5bf7b7fae15bf3367ba6051755694ead4

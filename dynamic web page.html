@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dynamic Webpage Using DOM</title>
+
+<style>
+h1{
+    font-family: Impact, sans-serif;
+    font-size: 50px;
+    color: #2E8B57;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+
+
+button{
+    background:seagreen;
+    color:black;
+    border:none;
+    padding:12px 25px;
+    margin:10px;
+    font-size:16px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:0.3s;
+    box-shadow:0 0 15px seagreen;
+}
+button:hover{
+    background:#ff00ff;
+    color:white;
+    box-shadow:0 0 20px #ff00ff;
+    transform:scale(1.05);
+}
+
+
+input{
+    padding:10px;
+    width:250px;
+    border:2px solid seagreen;
+    border-radius:8px;
+    background:white;
+    color:black;
+    font-size:16px;
+}
+input:focus{
+    outline:none;
+    box-shadow:0 0 15px seagreen;
+}
+
+
+.box{
+    width:80%;
+    margin:40px auto;
+    padding:30px;
+    background:rgba(255,255,255,0.08);
+    border:2px solid seagreen;
+    border-radius:15px;
+    box-shadow:0 0 20PX seagreen;
+}
+p{
+    color:#ec22ec;
+    font-size:18px;
+}
+hr{
+    width:90%;
+    height:3px;
+    border:none;
+    background:linear-gradient(to right, transparent, seagreen, transparent);
+    box-shadow:0 0 10px seagreen;
+    border-radius:5px;
+    margin:25px auto;
+}
+.glow{
+    color:black;
+    font-size:30px;
+    text-decoration: wavy;
+}
+
+@keyframes flash{
+    0%{opacity:1;}
+    50%{opacity:0.4;}
+    100%{opacity:1;}
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h1 id="heading">Welcome to BATTLE GROUNDS OF INDIA</h1>
+
+<button onclick="changeHeading()">Enter into the game</button>
+
+<hr>
+
+<h3>Background Color</h3>
+
+<button onclick="changeColor()">Change Color</button>
+
+<hr>
+
+<input type="text" id="name" placeholder="Enter your name">
+
+<button onclick="displayName()">Submit</button>
+
+<p id="result"></p>
+
+<hr>
+
+<button onclick="showDate()">Show Date & Time</button>
+
+<p id="date"></p>
+
+<hr>
+
+<p id="paragraph">
+rules and regulations of the game are hidden here.Things you need to follow before playing.
+</p>
+
+<button onclick="hidePara()">Hide</button>
+
+<button onclick="showPara()">Show</button>
+
+</div>
+
+<script>
+
+function changeHeading(){
+
+document.getElementById("heading").innerHTML="YOUR ARE IN THE BATTLE GROUND";
+
+}
+
+function changeColor(){
+
+document.body.style.backgroundColor="pink";
+
+}
+
+function displayName(){
+
+let user=document.getElementById("name").value;
+
+document.getElementById("result").innerHTML="Welcome "+user;
+
+}
+
+function showDate(){
+
+document.getElementById("date").innerHTML=Date();
+
+}
+
+function hidePara(){
+
+document.getElementById("paragraph").style.display="none";
+
+}
+
+function showPara(){
+
+document.getElementById("paragraph").style.display="block";
+
+}
+function displayName() {
+
+    let user = document.getElementById("name").value;
+
+    document.getElementById("result").innerHTML =
+    "Welcome " + user + "!";
+
+    document.getElementById("result").classList.add("glow");
+
+}
+
+</script>
+
+</body>
+</html>
